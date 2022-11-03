@@ -21,6 +21,19 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('/osu/1 should render out only one player', async () => {
+    const res = await request(app).get('/osu/1');
+    const mrekk = {
+      id: '1',
+      name: 'Mrekk',
+      rank: 1,
+      top_play: 1322,
+      play_style: 'DT',
+      country: 'Australia'
+    };
+    expect(res.body).toEqual(mrekk);
+  });
+
 
   
 
