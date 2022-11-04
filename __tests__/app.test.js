@@ -4,13 +4,12 @@ const app = require('../lib/app');
 const request = require('supertest');
 // const app = require('../lib/app');
 const OsuGame = require('../lib/models/osuModel');
+const OsuSongs = require('../lib/models/osuSongs');
 
 describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-
-
 
   it('/osu should render a list of all osu players', async () => {
     const res = await request(app).get('/osu');
@@ -35,8 +34,14 @@ describe('backend-express-template routes', () => {
   });
 
 
-  
-
+  it('/songs should render a list of songs', async () => {
+    const res = await request(app).get('/songs');
+    const allSongs = await OsuSongs.getAllSongs();
+    const expected = allSongs.map((song) => {
+      return { id: song.id, name: song.name, diff_name: song.diff_name, star_rating: song.star_rating, bpm: song.bpm, cs: song.cs };
+    });
+    expect(res.body).toEqual(expected);
+  });
 
 
   afterAll(() => {

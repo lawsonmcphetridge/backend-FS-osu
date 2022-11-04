@@ -19,3 +19,26 @@ VALUES
 ('Umbre', 40, 984, 'Stream', 'Germany'),
 ('Sytho', 73, 970, 'Speed', 'United States'),
 ('Clever', 17296, 394, 'No mod', 'United States');
+
+
+
+-------- osu songs table
+DROP TABLE IF EXISTS osu_songs;
+
+CREATE TABLE osu_songs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR NOT NULL,
+    diff_name VARCHAR NOT NULL,
+    star_rating INT NOT NULL,
+    bpm INT NOT NULL,
+    cs INT NOT NULL
+);
+
+INSERT INTO osu_songs (name, diff_name, star_rating, bpm, cs)
+VALUES
+('Tsukinami', 'Nostalgia', 6.01, 180, 3.8),
+('Save Me', 'Tradegy', 6.49, 190, 4),
+('LionHeart', 'Extreme', 6.63, 180, 4.2),
+('Louder Than Steel', 'Stainless Heart', 7.41, 190, 4.2),
+('Blue Dragon', 'Blue Dragon', 7.22, 191, 4.6);
+
