@@ -49,10 +49,9 @@ describe('backend-express-template routes', () => {
       id: '1',
       name: 'Tsukinami',
       diff_name: 'Nostalgia',
-      star_rating: 6.01,
+      star_rating: 6,
       bpm: 180,
-      cs: 3.8
-
+      cs: 4
     };
     expect(res.body).toEqual(tsukinami);
   });
