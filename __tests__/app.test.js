@@ -43,6 +43,22 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('/songs/1 should only render one song', async () => {
+    const res = await request(app).get('/songs/1');
+    const tsukinami = {
+      id: '1',
+      name: 'Tsukinami',
+      diff_name: 'Nostalgia',
+      star_rating: 6.01,
+      bpm: 180,
+      cs: 3.8
+
+    };
+    expect(res.body).toEqual(tsukinami);
+  });
+  
+
+
 
   afterAll(() => {
     pool.end();
